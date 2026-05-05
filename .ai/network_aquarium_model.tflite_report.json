@@ -1,0 +1,445 @@
+{
+    "_allocate_inputs": 4,
+    "_allocate_outputs": 4,
+    "cli_parameters": "generate --name network -m C:/Users/omarg/STM32CubeIDE/workspace_scenario3/Aquaruim/aquarium_model.tflite --type tflite --compression none --verbosity 1 --workspace C:\\Users\\omarg\\AppData\\Local\\Temp\\mxAI_workspace517849526430015801384816656113553 --output C:\\Users\\omarg\\.stm32cubemx\\network_output --allocate-inputs --series stm32f4 --allocate-outputs",
+    "cli_version": {
+        "major": 1,
+        "micro": 0,
+        "minor": 7
+    },
+    "cli_version_str": "1.7.0",
+    "code_size": 0,
+    "compression": {
+        "factor": null,
+        "layers": {}
+    },
+    "date_time": "Sat Dec 13 14:57:44 2025",
+    "error": 0,
+    "error_str": [],
+    "exec_cmd": "generate",
+    "exec_duration": 0.0,
+    "hash": "1909fbfb325f8fa037d71eaed9374340",
+    "inputs": [
+        "serving_default_input_10"
+    ],
+    "layers": [
+        {
+            "c_id": [
+                0,
+                1
+            ],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 8,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        2,
+                        1
+                    ]
+                },
+                "rom_size": 192
+            },
+            "id": 0,
+            "inputs": [],
+            "name": "serving_default_input_10",
+            "original": "",
+            "type": "Input"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 32,
+                "psize": 128,
+                "rom_size": 0
+            },
+            "id": 0,
+            "inputs": [],
+            "name": "sequential_dense_MatMul",
+            "original": "",
+            "type": "Placeholder"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 16,
+                "psize": 64,
+                "rom_size": 0
+            },
+            "id": 0,
+            "inputs": [],
+            "name": "sequential_dense_BiasAdd_ReadVariableOp",
+            "original": "",
+            "type": "Placeholder"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 48,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 64,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        16,
+                        1
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 0,
+            "inputs": [
+                "serving_default_input_10",
+                "sequential_dense_MatMul",
+                "sequential_dense_BiasAdd_ReadVariableOp"
+            ],
+            "name": "gemm_0",
+            "original": "FULLY_CONNECTED",
+            "type": "Gemm"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 16,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 64,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        16,
+                        1
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 0,
+            "inputs": [
+                "gemm_0"
+            ],
+            "name": "nl_0_nl",
+            "original": "FULLY_CONNECTED",
+            "type": "Nonlinearity"
+        },
+        {
+            "c_id": [
+                2,
+                3
+            ],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 128,
+                "psize": 512,
+                "rom_size": 544
+            },
+            "id": 1,
+            "inputs": [],
+            "name": "sequential_dense_1_MatMul",
+            "original": "",
+            "type": "Placeholder"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 8,
+                "psize": 32,
+                "rom_size": 0
+            },
+            "id": 1,
+            "inputs": [],
+            "name": "sequential_dense_1_BiasAdd_ReadVariableOp",
+            "original": "",
+            "type": "Placeholder"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 136,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 32,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        8,
+                        1
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 1,
+            "inputs": [
+                "nl_0_nl",
+                "sequential_dense_1_MatMul",
+                "sequential_dense_1_BiasAdd_ReadVariableOp"
+            ],
+            "name": "gemm_1",
+            "original": "FULLY_CONNECTED",
+            "type": "Gemm"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 8,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 32,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        8,
+                        1
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 1,
+            "inputs": [
+                "gemm_1"
+            ],
+            "name": "nl_1_nl",
+            "original": "FULLY_CONNECTED",
+            "type": "Nonlinearity"
+        },
+        {
+            "c_id": [
+                4,
+                5
+            ],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 32,
+                "psize": 128,
+                "rom_size": 144
+            },
+            "id": 2,
+            "inputs": [],
+            "name": "sequential_dense_2_MatMul",
+            "original": "",
+            "type": "Placeholder"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 4,
+                "psize": 16,
+                "rom_size": 0
+            },
+            "id": 2,
+            "inputs": [],
+            "name": "sequential_dense_2_BiasAdd_ReadVariableOp",
+            "original": "",
+            "type": "Placeholder"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 36,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 16,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        4,
+                        1
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 2,
+            "inputs": [
+                "nl_1_nl",
+                "sequential_dense_2_MatMul",
+                "sequential_dense_2_BiasAdd_ReadVariableOp"
+            ],
+            "name": "gemm_2",
+            "original": "FULLY_CONNECTED",
+            "type": "Gemm"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 4,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 16,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        4,
+                        1
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 2,
+            "inputs": [
+                "gemm_2"
+            ],
+            "name": "nl_2_nl",
+            "original": "FULLY_CONNECTED",
+            "type": "Nonlinearity"
+        },
+        {
+            "c_id": [
+                6
+            ],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 4,
+                "psize": 16,
+                "rom_size": 20
+            },
+            "id": 3,
+            "inputs": [],
+            "name": "sequential_dense_3_MatMul",
+            "original": "",
+            "type": "Placeholder"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 1,
+                "psize": 4,
+                "rom_size": 0
+            },
+            "id": 3,
+            "inputs": [],
+            "name": "sequential_dense_3_BiasAdd_ReadVariableOp",
+            "original": "",
+            "type": "Placeholder"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 5,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 4,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        1,
+                        1
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 3,
+            "inputs": [
+                "nl_2_nl",
+                "sequential_dense_3_MatMul",
+                "sequential_dense_3_BiasAdd_ReadVariableOp"
+            ],
+            "name": "gemm_3",
+            "original": "FULLY_CONNECTED",
+            "type": "Gemm"
+        },
+        {
+            "c_id": [
+                7
+            ],
+            "extras": {
+                "n_macc": 10,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 4,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        1,
+                        1
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 4,
+            "inputs": [
+                "gemm_3"
+            ],
+            "name": "nl_4",
+            "original": "LOGISTIC",
+            "type": "Nonlinearity"
+        }
+    ],
+    "model_files": [
+        "C:\\Users\\omarg\\STM32CubeIDE\\workspace_scenario3\\Aquaruim\\aquarium_model.tflite"
+    ],
+    "model_n_params": 225,
+    "model_name": "aquarium_model",
+    "model_size": 900,
+    "model_type": "tflite",
+    "name": "network",
+    "outputs": [
+        "nl_4"
+    ],
+    "ram_io_size": [
+        8,
+        4
+    ],
+    "ram_size": [
+        96,
+        96
+    ],
+    "report_version": 1.1,
+    "rom_cfact": 1.0,
+    "rom_heap_inspector": 2048,
+    "rom_inputs": [
+        {
+            "c_size": 8,
+            "c_type": "float",
+            "name": "serving_default_input_10"
+        }
+    ],
+    "rom_n_macc": 263,
+    "rom_outputs": [
+        {
+            "c_size": 4,
+            "c_type": "float",
+            "name": "nl_4"
+        }
+    ],
+    "rom_size": 900,
+    "strategy": "heap_overlay",
+    "tools_api_version": {
+        "major": 1,
+        "micro": 0,
+        "minor": 7
+    },
+    "tools_version": {
+        "extra": "19520",
+        "major": 8,
+        "micro": 0,
+        "minor": 1
+    },
+    "val_error": -1.0,
+    "val_error_desc": "None (None) #-1",
+    "val_metrics": []
+}

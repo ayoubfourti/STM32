@@ -1,0 +1,5 @@
+sensors.c:14:5:Humidity_ADC_to_Percent	24	static
+sensors.c:33:7:Lire_Temperature_LM35	24	static
+sensors.c:59:13:Water_Level_Label	16	static
+sensors.c:69:7:IA_WaterEncode	16	static
+sensors.c:81:13:Sensor_Name	16	static

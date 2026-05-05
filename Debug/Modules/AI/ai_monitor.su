@@ -1,0 +1,2 @@
+ai_monitor.c:10:6:AI_Monitor_Init	4	static
+ai_monitor.c:15:10:AI_Monitor_Update	72	static

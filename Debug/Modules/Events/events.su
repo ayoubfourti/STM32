@@ -1,0 +1,4 @@
+events.c:21:6:HAL_GPIO_EXTI_Callback	24	static
+events.c:66:6:Diagnostic_Capteur	72	static
+events.c:188:6:HAL_TIM_PeriodElapsedCallback	16	static
+events.c:202:6:HAL_ADC_ConvCpltCallback	16	static

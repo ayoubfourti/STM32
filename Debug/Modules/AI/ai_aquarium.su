@@ -1,0 +1,4 @@
+ai_aquarium.cpp:22:14:float standardize(float, float, float)	24	static
+ai_aquarium.cpp:38:9:int32_t AI_LastError()	4	static
+ai_aquarium.cpp:42:6:bool AI_Init()	24	static
+ai_aquarium.cpp:63:6:bool AI_RunStep(float, float, float*)	56	static
